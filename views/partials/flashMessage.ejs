@@ -1,0 +1,15 @@
+<% if(locals.errors){%>
+          
+    <% errors.forEach((err)=>{ %>
+        <div class="alert alert-danger mt-2">
+           <p> * <%= err.msg %></p>
+        </div>
+    <%}) %>
+
+<% } %>
+
+<% if(locals.message && message != ''){%>
+    <div class="alert alert-success mt-2">
+       <p> * <%= message %></p>
+    </div>
+<% } %>
