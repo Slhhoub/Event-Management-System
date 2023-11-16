@@ -115,7 +115,7 @@ router.post('/update',[
         req.flash('errors', error.array());
         res.redirect('/edit/'+req.body.id);
     } else {
-        //create obj
+        //create object
         let newFileds={
             title:req.body.title,
         }
