@@ -118,6 +118,7 @@ router.post('/update',[
         //create object
         let newFileds={
             title:req.body.title,
+            description:req.body.description,
         }
     }        
 })
