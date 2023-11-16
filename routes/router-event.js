@@ -3,6 +3,8 @@ const router = express.Router();
 const Event = require('../models/Event');
 const bodyParser = require('body-parser');
 const { check, validationResult } = require('express-validator');
+const moment =require('moment');
+moment().format();
 
 
 // parse application/x-www-form-urlencoded
@@ -86,7 +88,38 @@ router.post('/create', [
     }
 });
 // edit event
+router.get('/edit/:id', (req, res) => {
 
-
+    Event.findOne({ _id: req.params.id })
+        .then((event) => {
+            res.render('event/edit', {
+                event: event,
+                eventDate:moment(event.date).format('YYYY-MM-DD'),
+                errors: req.flash('errors'),
+                message: req.flash('info')
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+});
+// update the form
+router.post('/update',[
+    check('title').isLength({ min: 5 }).withMessage('Title should be more than 5 char'),
+    check('description').isLength({ min: 5 }).withMessage('description should be more than 5 char'),
+    check('location').isLength({ min: 5 }).withMessage('location should be more than 5 char'),
+    check('date').isLength({ min: 5 }).withMessage('date should be valid date'),  
+],(req,res)=>{
+    const error = validationResult(req);
+    if (!error.isEmpty()) {
+        req.flash('errors', error.array());
+        res.redirect('/edit/'+req.body.id);
+    } else {
+        //create obj
+        let newFileds={
+            title:req.body.title,
+        }
+    }        
+})
 
 module.exports = router;
