@@ -19,13 +19,10 @@ router.get('/', (req, res) => {
             for (let i = 0; i < events.length; i += chunkSize) {
                 chunk.push(events.slice(i, chunkSize + i));
             }
-            const user = req.user;
-            // res.json(chunk);
-            //res.render('event/index');
             res.render('event/index', {
                 chunk: chunk,
                 message: req.flash('info'),
-                user
+               
             });
         })
         .catch((err) => {
