@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-9 offset-md-2 ">
             <%- include('../partials/flashMessage') -%>
-            <form action="/update/" method="post">
+            <form action="/events/update/" method="post">
                 <div class="shadow-sm p-3 mb-5 bg-body rounded mt-3">
                     <h5 class="text-center">Edit the event</h5>
                     <input type="hidden" name="id" value="<%= event.id %>">

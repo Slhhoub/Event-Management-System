@@ -12,8 +12,9 @@
                   <p>
                     <span class="badge badge-secondary text-black"><%= event.date.toDateString() %></span>
                   </p>
-                  <a href="<%= '/edit/'+event.id %>" class="btn btn-primary">Edit</a>
-                  <a href="" class="btn btn-danger">Delete</a>
+                  <a href="<%= '/events/edit/'+event.id %>" class="btn btn-primary">Edit</a>
+                  <button class="btn btn-danger" onclick="deleteEvent()" id="deleteBtn" data-id="<%= event.id %>">Delete</button>
+                  
                 </div>
               </div>
         </div>

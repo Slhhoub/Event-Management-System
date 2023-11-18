@@ -1,0 +1,30 @@
+<%- include('../partials/header') -%>
+<%- include('../partials/navbar') -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 offset-md-2 ">
+            <%- include('../partials/flashMessage') -%>
+            <form action="/login/" method="post">
+                <div class="shadow-sm p-3 mb-5 bg-body rounded mt-3">
+                    <h5 class="text-center">Login</h5> 
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" class="form-control ">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="password">password</label>
+                        <input type="text" name="password" id="password" class="form-control">
+                    </div>
+                    <div class="form-group ">
+                        <button type="submit" class="btn btn-primary mt-2">Login</button>
+                    </div>
+                </div>
+
+            </form>
+           
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') -%>

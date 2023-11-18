@@ -13,3 +13,16 @@
        <p> * <%= message %></p>
     </div>
 <% } %>
+
+<% if(locals.error && error != ''){%>
+    <div class="alert alert-danger mt-2">
+       <p> * <%= error %></p>
+    </div>
+<% } %>
+
+<% if (locals.success && success !="") {%>
+         
+    <div class="alert alert-success">
+            <%= success%>
+    </div>
+  <%}%>  

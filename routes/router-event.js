@@ -19,11 +19,13 @@ router.get('/', (req, res) => {
             for (let i = 0; i < events.length; i += chunkSize) {
                 chunk.push(events.slice(i, chunkSize + i));
             }
+            const user = req.user;
             // res.json(chunk);
             //res.render('event/index');
             res.render('event/index', {
                 chunk: chunk,
-                message: req.flash('info')
+                message: req.flash('info'),
+                user
             });
         })
         .catch((err) => {
@@ -119,8 +121,30 @@ router.post('/update',[
         let newFileds={
             title:req.body.title,
             description:req.body.description,
+            location:req.body.location,
+            date:req.body.date,
         }
+        let query = {_id: req.body.id}
+        Event.updateOne(query,newFileds)
+        .then(()=>{
+            req.flash('info','the event was update successfuly'),
+            res.redirect('/edit/'+req.body.id)
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
     }        
+});
+// delete event 
+router.delete('/delete/:id',(req,res)=>{
+    let query = {_id: req.params.id}
+    Event.deleteOne(quer)
+    .then(()=>{
+        res.status(200).json('delted');
+    })
+    .catch((err)=>{
+        res.status(404).json('there was an error event was not deleted');
+    })
 })
 
 module.exports = router;

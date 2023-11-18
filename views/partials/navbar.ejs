@@ -13,13 +13,21 @@
           <a class="nav-link" href="/create">Add new event </a>
         </li>
       </ul>
+ 
+
       <ul class="navbar-nav ml-auto">
+        <% if (!user) { %>
           <li class="nav-item active">
-              <a href="" class="nav-link">Login</a>
+              <a href="/login" class="nav-link">Login</a>
           </li>
           <li class="nav-item active"> 
-              <a href="" class="nav-link">Register</a>
+              <a href="/signup" class="nav-link">Register</a>
           </li>
+          <% } else { %>
+            <li class="nav-item active"> 
+              <a href="/logout" class="nav-link">Logout</a>
+          </li>
+          <%}  %>
       </ul>
     </div>
   </div>
